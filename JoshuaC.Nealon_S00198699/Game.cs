@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace JoshuaC.Nealon_S00198699
 {
     public class Game
     {
-        //public int ID { get; set; }
+        [Key]
+        public int ID { get; set; }
         public string Name { get; set; }
 
         public int CriticScore { get; set; }
@@ -42,5 +45,10 @@ namespace JoshuaC.Nealon_S00198699
         {
             Price = Price - decrease;
         }
+    }
+    public class GameData : DbContext
+    {
+        public GameData() : base("GameInfo") { }
+        public DbSet<Game> Games { get; set; }
     }
 }
