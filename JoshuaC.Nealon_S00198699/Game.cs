@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace JoshuaC.Nealon_S00198699
 {
-    class Game
+    public class Game
     {
-        public int ID { get; set; }
+        //public int ID { get; set; }
         public string Name { get; set; }
 
         public int CriticScore { get; set; }
@@ -38,9 +38,9 @@ namespace JoshuaC.Nealon_S00198699
             return Name;
         }
 
-        public void DecreasePrice(double increase)
+        public void DecreasePrice(decimal decrease)
         {
-            Price *= (decimal)(1 - increase);
+            Price = Price - decrease;
         }
     }
 }
