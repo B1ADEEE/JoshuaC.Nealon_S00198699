@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JoshuaC.Nealon_S00198699"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+    <Window.Resources>
+        <DataTemplate x:Key="listboxTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding GameImage}" Height="30"/>
+                <TextBlock Margin="5" Text="{Binding Name}" VerticalAlignment="Center"/>
+                <TextBlock Text="~" VerticalAlignment="Center"/>
+                <TextBlock Margin="5" Text="{Binding CriticScore}" VerticalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="DROPFilter">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Platform}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <ListBox  ItemTemplate="{StaticResource ResourceKey=listboxTemplate}" x:Name="GamesLBX" HorizontalAlignment="Left" Height="247" Margin="110,76,0,0" VerticalAlignment="Top" Width="225" SelectionChanged="GamesLBX_SelectionChanged" />
+        <Image x:Name="GameIMG" HorizontalAlignment="Left" Height="176" Margin="455,170,0,0" VerticalAlignment="Top" Width="165"/>
+        <TextBlock x:Name="GameDescTBX" HorizontalAlignment="Left" Margin="455,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="80" Width="165" FontSize="10"/>
+        <ComboBox ItemTemplate="{StaticResource ResourceKey=DROPFilter}" x:Name="FilterDrop" HorizontalAlignment="Left" Margin="110,46,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="FilterDrop_SelectionChanged" DropDownOpened="FilterDrop_DropDownOpened"/>
     </Grid>
 </Window>
